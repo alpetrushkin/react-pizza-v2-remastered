@@ -9,7 +9,7 @@ export const Categories = () => {
       <ul>
         {pizzaSort.map((item, index) => {
           return (
-            <li onClick={() => setCountPizza(index)} className={countPizza === index ? 'active' : ''}>{item}</li>
+            <li key={index} onClick={() => setCountPizza(index)} className={countPizza === index ? 'active' : ''}>{item}</li>
           )
         })}
       </ul>

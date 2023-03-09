@@ -20,9 +20,9 @@ function App() {
                <h2 className="content__title">Все пиццы</h2>
                <div className="content__items">
                   {
-                     pizzas.map((pizzas) => {
+                     pizzas.map((pizzas, i) => {
                         return (
-                           <PizzaBlock {...pizzas}/>
+                           <PizzaBlock key={i} {...pizzas}/>
                         )
                      })
                   }
