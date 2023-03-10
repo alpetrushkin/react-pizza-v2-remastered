@@ -8,6 +8,7 @@ import {PizzaBlock} from "./components/pizzaBlock/PizzaBlock";
 function App() {
   const [pizzas, setPizzas] = React.useState([]);
 
+
   React.useEffect(() => {
     fetch('https://640aa2a181d8a32198ccd7e2.mockapi.io/pizzas').then((res) => {
       return res .json()
