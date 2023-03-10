@@ -4,20 +4,20 @@ import {Header} from "./components/header/Header";
 import {Categories} from "./components/categories/Categories";
 import {Sort} from "./components/sort/Sort";
 import {PizzaBlock} from "./components/pizzaBlock/PizzaBlock";
+import {Skeleton} from "./components/pizzaBlock/Skeleton";
 
 function App() {
-  const [pizzas, setPizzas] = React.useState([]);
+   const [pizzas, setPizzas] = React.useState([]);
+   const [isLoading, setIsLoading] = React.useState(true);
 
-
-  React.useEffect(() => {
-    fetch('https://640aa2a181d8a32198ccd7e2.mockapi.io/pizzas').then((res) => {
-      return res .json()
-    }) .then((arr) => {
-      return (
-        setPizzas(arr)
-      )
-    })
-  }, [])
+   React.useEffect(() => {
+      fetch('https://640aa2a181d8a32198ccd7e2.mockapi.io/pizzas')
+         .then((res) => res.json())
+         .then((arr) => {
+            setPizzas(arr);
+            setIsLoading(false);
+         })
+   }, [])
 
    return (
       <div className="wrapper">
@@ -30,13 +30,12 @@ function App() {
                </div>
                <h2 className="content__title">Все пиццы</h2>
                <div className="content__items">
-                  {
-                     pizzas.map((pizzas, i) => {
+                  {isLoading ? [...new Array(6)].map((_, index) => <Skeleton key={index}/>)
+                     : pizzas.map((pizzas, i) => {
                         return (
-                           <PizzaBlock key={i} {...pizzas}/>
+                           <PizzaBlock key={i} {...pizzas} />
                         )
-                     })
-                  }
+                     })}
                </div>
             </div>
          </div>
