@@ -1,12 +1,18 @@
 import React from 'react';
 
-export const Sort = () => {
+export const Sort = ({value, onClickSortID}) => {
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState(0);
-  const sortFilter = ['популярности', 'цене', 'алфавиту'];
+  const sortFilter = [
+    {name: 'популярности (DESC)', sortProperty: 'rating'},
+    {name: 'популярности (ASC)', sortProperty: '-rating'},
+    {name: 'цене (DESC)', sortProperty: 'price'},
+    {name: 'цене (ASC)', sortProperty: '-price'},
+    {name: 'алфавиту (DESC)', sortProperty: 'title'},
+    {name: 'алфавиту (ASC)', sortProperty: '-title'},
+  ];
 
-  const onClickSelectedFilter = (i) => {
-    setSelected(i)
+  const onClickSelectedFilter = (sort) => {
+    onClickSortID(sort)
     setOpen(false)
   }
 
@@ -26,7 +32,7 @@ export const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{sortFilter[selected]}</span>
+        <span onClick={() => setOpen(!open)}>{value.name}</span>
       </div>
       {open &&
         <div className="sort__popup">
@@ -34,8 +40,8 @@ export const Sort = () => {
             {
               sortFilter.map((sort, i) => {
                 return (
-                  <li onClick={() => onClickSelectedFilter(i)}
-                      className={selected === i ? 'active' : ''}>{sort}
+                  <li onClick={() => onClickSelectedFilter(sort)}
+                      className={value.sortProperty === sort.sortProperty ? 'active' : ''}>{sort.name}
                   </li>
                 )
               })

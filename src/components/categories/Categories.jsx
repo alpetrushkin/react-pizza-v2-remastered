@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Categories = () => {
-  const [countPizza, setCountPizza] = React.useState(0);
+export const Categories = ({ value, onClickCategoriesID }) => {
   const pizzaSort = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
@@ -9,7 +8,7 @@ export const Categories = () => {
       <ul>
         {pizzaSort.map((item, index) => {
           return (
-            <li key={index} onClick={() => setCountPizza(index)} className={countPizza === index ? 'active' : ''}>{item}</li>
+            <li key={index} onClick={() => onClickCategoriesID(index)} className={value === index ? 'active' : ''}>{item}</li>
           )
         })}
       </ul>
