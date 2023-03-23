@@ -1,0 +1,35 @@
+.search {
+   margin-right: auto;
+   position: relative;
+
+   .searchImg {
+      width: 22px;
+      height: 22px;
+      opacity: 0.5;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+   }
+
+   .input {
+      width: 300px;
+      padding: 8px 25px 8px 40px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+
+      &:focus {
+         border: 1px solid rgba(0, 0, 0, 0.4);
+      }
+   }
+
+   .remove {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      opacity: 0.8;
+      cursor: pointer;
+   }
+}

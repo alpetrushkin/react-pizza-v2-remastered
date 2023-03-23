@@ -7,13 +7,14 @@ import {Routes, Route} from "react-router-dom";
 import {Cart} from "./components/Pages/Cart";
 
 function App() {
+   const [searchActive, setSearchActive] = React.useState('');
 
    return (
       <div className="wrapper">
-         <Header/>
+         <Header searchActive={searchActive} setSearchActive={setSearchActive}/>
          <div className="content">
             <Routes>
-               <Route path={'/'} element={<Home/>}/>
+               <Route path={'/'} element={<Home searchActive={searchActive}/>}/>
                <Route path={'/cart/'} element={<Cart/>}/>
                <Route path={'*'} element={<NotFound/>}/>
             </Routes>
