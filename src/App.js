@@ -3,7 +3,7 @@ import '../src/scss/app.scss';
 import {Header} from "./components/header/Header";
 import {Home} from "./components/Pages/Home";
 import {NotFound} from "./components/Pages/NotFound";
-import {Routes, Route} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {Cart} from "./components/Pages/Cart";
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
                <Route path={'*'} element={<NotFound/>}/>
             </Routes>
          </div>
+
       </div>
    );
 }
