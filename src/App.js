@@ -6,20 +6,23 @@ import {NotFound} from "./components/Pages/NotFound";
 import {Route, Routes} from "react-router-dom";
 import {Cart} from "./components/Pages/Cart";
 
+export const SearchContext = React.createContext('');
+
 function App() {
    const [searchActive, setSearchActive] = React.useState('');
 
    return (
       <div className="wrapper">
-         <Header searchActive={searchActive} setSearchActive={setSearchActive}/>
-         <div className="content">
-            <Routes>
-               <Route path={'/'} element={<Home searchActive={searchActive}/>}/>
-               <Route path={'/cart/'} element={<Cart/>}/>
-               <Route path={'*'} element={<NotFound/>}/>
-            </Routes>
-         </div>
-
+         <SearchContext.Provider value={{ searchActive, setSearchActive }}>
+            <Header/>
+            <div className="content">
+               <Routes>
+                  <Route path={'/'} element={<Home/>}/>
+                  <Route path={'/cart/'} element={<Cart/>}/>
+                  <Route path={'*'} element={<NotFound/>}/>
+               </Routes>
+            </div>
+         </SearchContext.Provider>
       </div>
    );
 }
